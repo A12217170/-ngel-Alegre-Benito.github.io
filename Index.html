@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Nexwim Logistic S.A.</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Botón de Cerrar Sesión -->
+    <button id="logoutButton" style="display: none;">Cerrar Sesión</button>
+
+    <!-- Interfaz de Inicio de Sesión -->
+    <div id="loginScreen">
+        <div class="login-container">
+            <h1>Iniciar Sesión</h1>
+            <h2>CRM NEXWIM</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" placeholder="Ingrese su usuario" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" placeholder="Ingrese su contraseña" required>
+                </div>
+                <button type="submit" id="loginButton">Iniciar Sesión</button>
+            </form>
+            <p id="loginError" class="error-message"></p>
+            <p>Si no tienes cuenta, puedes <a href="#"  id="signupLink"> registrarte</a>.</p>
+            <p>Si ya tienes una cuenta, puedes <a href="#" id="loginLink">iniciar sesión</a>.</p>
+            <p>Si necesitas ayuda, puedes <a href="#" id="helpLink">contactarnos</a>.</p>
+            <p>Versión 1.0</p>
+        </div>
+    </div>
+
+    <!-- Contenido del CRM (oculto hasta que se inicie sesión) -->
+    <div id="crmContent" style="display: none;">
+        <!-- Encabezado principal -->
+        <header>
+            <h1>CRM NEXWIM LOGISTIC SAC</h1>
+            <nav>
+                <div class="sidebar">
+                    <div class="logo">
+                        <img src="IMG/Logo con Tipografía para Iniciales del Nombre Profesional Circular Limpio Elegante Blanco Negro (7).png" alt="Logo Nexwim">
+                        <div>
+                            <ul class="menu">
+                                <li class="menu-item dropdown">
+                                    <i class="icon-comprobante"></i> Comprobantes
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#summary-decline">Resumen de baja</a></li>
+                                        <li class="submenu-item"><a href="#pending-credits">Créditos Pendientes</a></li>
+                                        <li class="submenu-item"><a href="#sales-invoice">Facturas de Venta</a></li>
+                                        <li class="submenu-item"><a href="#purchase-invoice">Facturas de Compra</a></li>
+                                        <li class="submenu-item"><a href="#cash-register-invoice">Facturas de Caja</a></li>
+                                        <li class="submenu-item"><a href="#summary-invoice">Facturas de Resumen</a></li>
+                                        <li class="submenu-item"><a href="#summary-credit-invoice">Facturas de Crédito</a></li>
+                                        <li class="submenu-item"><a href="#summary-debit-invoice">Facturas de Débito</a></li>
+                                        <li class="submenu-item"><a href="#sales-credit-invoice">Facturas de Crédito de Venta</a></li>
+                                        <li class="submenu-item"><a href="#purchase-credit-invoice">Facturas de Crédito de Compra</a></li>
+                                        <li class="submenu-item"><a href="#cash-register-credit-invoice">Facturas de Crédito de Caja</a></li>
+                                        <li class="submenu-item"><a href="#sales-debit-invoice">Facturas de Débito de Venta</a></li>
+                                        <li class="submenu-item"><a href="#purchase-debit-invoice">Facturas de Débito de Compra</a></li>
+                                        <li class="submenu-item"><a href="#cash-register-debit-invoice">Facturas de Débito de Caja</a></li>
+                                        <li class="submenu-item"><a href="#bank-statement">Extracto Bancario</a></li>
+                                        <li class="submenu-item"><a href="#bank-statement-credit">Extracto Bancario de Crédito</a></li>
+                                        <li class="submenu-item"><a href="#bank-statement-debit">Extracto Bancario de Débito</a></li>
+                                        <li class="submenu-item"><a href="#bank-statement-summary">Extracto Bancario de Resumen</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> Contabilidad
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#cash-register">Caja</a></li>
+                                        <li class="submenu-item"><a href="#bank-statement">Extracto Bancario</a></li>
+                                        <li class="submenu-item"><a href="#bank-statement-credit">Extracto Bancario de Crédito</a></li>
+                                        <li class="submenu-item"><a href="#bank-statement-debit">Extracto Bancario de Débito</a></li>
+                                        <li class="submenu-item"><a href="#bank-statement-summary">Extracto Bancario de Resumen</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> Reportes
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#summary-decline">Resumen de baja</a></li>
+                                        <li class="submenu-item"><a href="#pending-credits">Créditos Pendientes</a></li>
+                                        <li class="submenu-item"><a href="#sales-invoice">Facturas de Venta</a></li>
+                                        <li class="submenu-item"><a href="#purchase-invoice">Facturas de Compra</a></li>
+                                        <li class="submenu-item"><a href="#cash-register-invoice">Facturas de Caja</a></li>
+                                        <li class="submenu-item"><a href="#summary-invoice">Facturas de Resumen</a></li>
+                                        <li class="submenu-item"><a href="#summary-credit-invoice">Facturas de Crédito</a></li>
+                                        <li class="submenu-item"><a href="#summary-debit-invoice">Facturas de Débito</a></li>
+                                        <li class="submenu-item"><a href="#sales-credit-invoice">Facturas de Crédito de Venta</a></li>
+                                        <li class="submenu-item"><a href="#purchase-credit-invoice">Facturas de Crédito de Compra</a></li>
+                                        <li class="submenu-item"><a href="#cash-register-credit-invoice">Facturas de Crédito de Caja</a></li>
+                                        <li class="submenu-item"><a href="#sales-debit-invoice">Facturas de Débito de Venta</a></li>
+                                        <li class="submenu-item"><a href="#purchase-debit-invoice">Facturas de Débito de Compra</a></li>
+                                        <li class="submenu-item"><a href="#cash-register-debit-invoice">Facturas de Débito de Caja</a></li>
+                                        <li class="submenu-item"><a href="#bank-statement">Extracto Bancario</a></li>
+                                        <li class="submenu-item"><a href="#bank-statement-credit">Extracto Bancario de Crédito</a></li>
+                                        <li class="submenu-item"><a href="#bank-statement-debit">Extracto Bancario de Débito</a></li>
+                                        <li class="submenu-item"><a href="#bank-statement-summary">Extracto Bancario de Resumen</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> Configuración
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#sunat-config">SUNAT</a></li>
+                                        <li class="submenu-item"><a href="#smtp-config">SMTP</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> Administración
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#client-list">Clientes</a></li>
+                                        <li class="submenu-item"><a href="#product-list">Productos</a></li>
+                                        <li class="submenu-item"><a href="#sales-list">Ventas</a></li>
+                                        <li class="submenu-item"><a href="#inventory-list">Inventario</a></li>
+                                        <li class="submenu-item"><a href="#purchases-list">Compras</a></li>
+                                        <li class="submenu-item"><a href="#sales-list">Reporte de Clientes</a></li>
+                                        <li class="submenu-item"><a href="#inventory-list">Reporte de Inventario</a></li>
+                                        <li class="submenu-item"><a href="#purchases-list">Reporte de Compras</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> Sistema
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#system-config">Configuración del Sistema</a></li>
+                                        <li class="submenu-item"><a href="#smtp-config">SMTP</a></li>
+                                        <li class="submenu-item"><a href="#sunat-config">SUNAT</a></li>
+                                        <li class="submenu-item"><a href="#reports">Reportes</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> Reportes
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#summary-decline">Resumen de baja</a></li>
+                                        <li class="submenu-item"><a href="#pending-credits">Créditos Pendientes</a></li>
+                                        <li class="submenu-item"><a href="#sales-invoice">Facturas de Venta</a></li>
+                                        <li class="submenu-item"><a href="#purchase-invoice">Facturas de Compra</a></li>
+                                        <li class="submenu-item"><a href="#cash-register-invoice">Facturas de Caja</a></li>
+                                        <li class="submenu-item"><a href="#summary-invoice">Facturas de Resumen</a></li>
+                                        <li class="submenu-item"><a href="#summary-credit-invoice">Facturas de Crédito</a></li>
+                                        <li class="submenu-item"><a href="#summary-debit-invoice">Facturas de Débito</a></li>
+                                        <li class="submenu-item"><a href="#sales-credit-invoice">Facturas de Crédito de Venta</a></li>
+                                        <li class="submenu-item"><a href="#purchase-credit-invoice">Facturas de Crédito de Compra</a></li>
+                                        <li class="submenu-item"><a href="#cash-register-credit-invoice">Facturas de Crédito de Caja</a></li>
+                                        <li class="submenu-item"><a href="#sales-debit-invoice">Facturas de Débito de Venta</a></li>                                        
+                                        <li class="submenu-item"><a href="#purchase-debit-invoice">Facturas de Débito de Compra</a></li>
+                                        <li class="submenu-item"><a href="#cash-register-debit-invoice">Facturas de Débito de Caja</a></li>
+                                        <li class="submenu-item"><a href="#bank-statement">Extracto Bancario</a></li>
+                                        <li class="submenu-item"><a href="#bank-statement-credit">Extracto Bancario de Crédito</a></li>
+                                        <li class="submenu-item"><a href="#bank-statement-debit">Extracto Bancario de Débito</a></li>
+                                        <li class="submenu-item"><a href="#bank-statement-summary">Extracto Bancario de Resumen</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> Ventas
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#sales-list">Ventas</a></li>
+                                        <li class="submenu-item"><a href="#sales-invoice">Facturas de Venta</a></li>
+                                        <li class="submenu-item"><a href="#sales-credit-invoice">Facturas de Crédito de Venta</a></li>
+                                        <li class="submenu-item"><a href="#sales-debit-invoice">Facturas de Débito de Venta</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> Compras
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#purchases-list">Compras</a></li>
+                                        <li class="submenu-item"><a href="#purchase-invoice">Facturas de Compra</a></li>
+                                        <li class="submenu-item"><a href="#purchase-credit-invoice">Facturas de Crédito de Compra</a></li>
+                                        <li class="submenu-item"><a href="#purchase-debit-invoice">Facturas de Débito de Compra</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> Inventario
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#inventory-list">Inventario</a></li>
+                                        <li class="submenu-item"><a href="#kardex">Kardex</a></li>
+                                        <li class="submenu-item"><a href="#personnel">Personal</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> planilla de personal
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#employee-list">Empleados</a></li>
+                                        <li class="submenu-item"><a href="#employee-position">Cargo</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> Almacen
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#warehouse">Almacen</a></li>
+                                        <li class="submenu-item"><a href="#warehouse-stock">Stock</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> categorias
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#category-list">Categorias</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> unidades de medida
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#unit-list">Unidades de Medida</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> <stock-precios>
+                                        <ul class="submenu">
+                                            <li class="submenu-item"><a href="#stock-list">Stock</a></li>
+                                            <li class="submenu-item"><a href="#stock-price">Precios</a></li>
+                                        </ul>
+                                    </stock-precios>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> Registro de inventario
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#inventory-list">Inventario</a></li>
+                                        <li class="submenu-item"><a href="#kardex">Kardex</a></li>
+                                        <li class="submenu-item"><a href="#personnel">Personal</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> Planilla de personal
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#employee-list">Empleados</a></li>
+                                        <li class="submenu-item"><a href="#employee-position">Cargo</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> -kardex por Producto
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#kardex">Kardex</a></li>
+                                        <li class="submenu-item"><a href="#stock-list">Stock</a></li>
+                                        <li class="submenu-item"><a href="#stock-price">Precios</a></li>
+                                        <li class="submenu-item"><a href="#stock-inventory">Inventario</a></li>
+                                        <li class="submenu-item"><a href="#stock-purchase">Compras</a></li>
+                                        <li class="submenu-item"><a href="#stock-sale">Ventas</a></li>
+                                        <li class="submenu-item"><a href="#stock-report">Reporte</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> Configuración del Sistema
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#sunat-config">SUNAT</a></li>
+                                        <li class="submenu-item"><a href="#smtp-config">SMTP</a></li>
+                                        <li class="submenu-item"><a href="#system-config">Configuración</a></li>
+                                        <li class="submenu-item"><a href="#reports">Reportes</a></li>
+                                        <li class="submenu-item"><a href="#warehouse">Almacen</a></li>
+                                        <li class="submenu-item"><a href="#warehouse-stock">Stock</a></li>
+                                        <li class="submenu-item"><a href="#warehouse-inventory">Inventario</a></li>
+                                        <li class="submenu-item"><a href="#warehouse-purchase">Compras</a></li>
+                                        <li class="submenu-item"><a href="#warehouse-sale">Ventas</a></li>
+                                        <li class="submenu-item"><a href="#warehouse-report">Reporte</a></li>
+                                        <li class="submenu-item"><a href="#category-list">Categorias</a></li>
+                                        <li class="submenu-item"><a href="#unit-list">Unidades de Medida</a></li>
+                                        <li class="submenu-item"><a href="#stock-list">Stock</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <i class="icon-cash"></i> Cerrar Sesión
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="#logout">Cerrar Sesión</a></li>
+                                        
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>                            
+            </nav>
+        </header>
+        <!-- CLIENTES -->
+        <section id="clients" class="section">
+            <h2>Clientes</h2>
+            <form id="clientForm">
+                <label for="clientName">Nombre:</label>
+                <input type="text" id="clientName" required>
+                <label for="clientEmail">Email:</label>
+                <input type="email" id="clientEmail" required>
+                <label for="clientPhone">Teléfono:</label>
+                <input type="tel" id="clientPhone" required>
+                <button type="submit">Agregar Cliente</button>
+            </form>
+            <h3>Lista de Clientes</h3>
+            <ul id="clientList"></ul>
+        </section>
+        <!-- PRODUCTOS -->
+        <section id="products" class="section">
+            <h2>Productos</h2>
+            <form id="productForm">
+                <label for="productName">Nombre:</label>
+                <input type="text" id="productName" required>
+                <label for="productPrice">Precio:</label>
+                <input type="number" id="productPrice" required>
+                <button type="submit">Agregar Producto</button>
+            </form>
+            <h3>Lista de Productos</h3>
+            <ul id="productList"></ul>
+        </section>
+        <!-- VENTAS -->
+        <section id="sales" class="section">
+            <h2>Ventas</h2>
+            <form id="salesForm">
+                <label for="saleClient">Cliente:</label>
+                <select id="saleClient" required>
+                    <option value="">Seleccionar cliente</option>
+                    <option value="1">Cliente 1</option>
+                    <option value="2">Cliente 2</option>
+                    <option value="3">Cliente 3</option>
+                    <option value="4">Cliente 4</option>
+                    <option value="5">Cliente 5</option>
+                    <option value="6">Cliente 6</option>
+                    <option value="7">Cliente 7</option>
+                    <option value="8">Cliente 8</option>
+                    <option value="9">Cliente 9</option>
+                    <option value="10">Cliente 10</option>
+                </select>
+                <label for="saleProduct">Distrito:</label><br>
+                <select id="saleDistrict" required>
+                    <option value="">Seleccionar distrito</option>
+                    <option value="1">San Juan de Dios</option>
+                    <option value="2">El Salvador</option>
+                    <option value="3">San Cristóbal</option>
+                    <option value="4">La Vega</option>
+                    <option value="5">La Romana</option>
+                    <option value="6">La Concepción</option>
+                    <option value="7">San Pedro de Macorís</option>
+                    <option value="8">San Antonio</option>
+                    <option value="9">San Antonio de los Baños</option>
+                    <option value="10">San Antonio de Padua</option>
+                    <option value="11">San Antonio de los Tejedores</option>
+                    <option value="12">San Antonio de los Tejedores</option>
+                    <option value="13">San Antonio de los Tejedores</option>
+                    <option value="14">San Antonio de los Tejedores</option>
+                    <option value="15">San Antonio de los Tejedores</option>
+                </select>
+                <label for="saleQuantity">Cantidad:</label>
+                <input type="number" id="saleQuantity" required>
+                <label for="saleType">Tipo de Comprobante:</label>
+                <select id="saleType" required>
+                    <option value="boleta">Boleta</option>
+                    <option value="factura">Factura</option>
+                    <option value="nota">Nota de Crédito</option>
+                </select>
+                <button type="submit">Registrar Venta</button>
+            </form>
+            <h3>Ventas Registradas</h3>
+            <ul id="salesList"></ul>
+        </section>
+        <!-- Secciones del CRM -->
+        <section id="categories" class="section">
+            <h2>Gestión de Categorías</h2>
+            <form id="categoryForm">
+                <label for="categoryName">Nombre de Categoría:</label>
+                <input type="text" id="categoryName" required>
+                <button type="submit">Agregar Categoría</button>
+            </form>
+            <h3>Lista de Categorías</h3>
+            <ul id="categoryList"></ul>
+        </section>
+
+        <section id="measure-units" class="section">
+            <h2>Gestión de Unidades de Medida</h2>
+            <form id="unitForm">
+                <label for="unitName">Nombre de Unidad:</label>
+                <input type="text" id="unitName" required>
+                <button type="submit">Agregar Unidad de Medida</button>
+            </form>
+            <h3>Lista de Unidades de Medida</h3>
+            <ul id="unitList"></ul>
+        </section>
+
+        <section id="purchases" class="section">
+            <h2>Gestión de Compras</h2>
+            <form id="purchaseForm">
+                <label for="purchaseProduct">Producto:</label>
+                <input type="text" id="purchaseProduct" required>
+                <label for="purchaseQuantity">Cantidad:</label>
+                <input type="number" id="purchaseQuantity" required>
+                <label for="purchasePrice">Precio Unitario:</label>
+                <input type="number" id="purchasePrice" required>
+                <button type="submit">Registrar Compra</button>
+            </form>
+            <h3>Compras Realizadas</h3>
+            <ul id="purchaseList"></ul>
+        </section>
+
+        <!-- Sección de Gestión de Ventas -->
+        <section id="sales" class="section">
+            <h2>Registrar Ventas</h2>
+            <form id="salesForm">
+                <label for="saleClient">Cliente:</label>
+                <select id="saleClient" required>
+                    <option value="">Seleccionar cliente</option>
+                </select>
+                <label for="saleProduct">Distrito:</label><br>
+                <select id="saleDistrict" required>
+                    <option value="">Seleccionar distrito</option>
+                    <option value="1">San Juan de Dios</option>
+                    <option value="2">El Salvador</option>
+                    <option value="3">San Cristóbal</option>
+                    <option value="4">La Vega</option>
+                    <option value="5">La Romana</option>
+                    <option value="6">La Concepción</option>
+                    <option value="7">San Pedro de Macorís</option>
+                    <option value="8">San Antonio</option>
+                    <option value="9">San Antonio de los Baños</option>
+                    <option value="10">San Antonio de Padua</option>
+                    <option value="11">San Antonio de los Tejedores</option>
+                    <option value="12">San Antonio de los Tejedores</option>
+                    <option value="13">San Antonio de los Tejedores</option>
+                    <option value="14">San Antonio de los Tejedores</option>
+                    <option value="15">San Antonio de los Tejedores</option>
+                </select>
+                <label for="saleQuantity">Cantidad:</label>
+                <input type="number" id="saleQuantity" required>
+                <label for="saleType">Tipo de Comprobante:</label>
+                <select id="saleType" required>
+                    <option value="boleta">Boleta</option>
+                    <option value="factura">Factura</option>
+                    <option value="nota">Nota de Crédito</option>
+                </select>
+                <button type="submit">Registrar Venta</button>
+            </form>
+            <h3>Ventas Registradas</h3>
+            <ul id="salesList"></ul>
+        </section>
+
+        <!-- Sección de Gestión de Inventario -->
+        <section id="inventory" class="section">
+            <h2>Inventario</h2>
+            <h3>Kardex</h3>
+            <form id="kardexForm">
+                <label for="kardexProduct">Producto:</label>
+                <input type="text" id="kardexProduct" list="productList" required>
+                <datalist id="productList">
+                    <option value="Producto 1"></option>
+                    <option value="Producto 2"></option>
+                    <option value="Producto 3"></option>
+                    <option value="Producto 4"></option>
+                    <option value="Producto 5"></option>
+                    <option value="Producto 6"></option>
+                    <option value="Producto 7"></option>
+                    <option value="Producto 8"></option>
+                    <option value="Producto 9"></option>
+                    <option value="Producto 10"></option>
+                </datalist>
+                <input type="text" id="kardexProduct" required>
+                <label for="kardexStock">Cantidad:</label>
+                <input type="number" id="kardexStock" min="0" required>
+                <label for="kardexStock">Stock:</label>
+                <input type="number" id="kardexStock" required>
+                <button type="submit">Actualizar Kardex</button>
+            </form>
+            <h3>Planilla de Personal</h3>
+            <form id="personnelForm">
+                <label for="employeeName">Empleado:</label>
+                <input type="text" id="employeeName" required>
+                <label for="employeePosition">Cargo:</label>
+                <input type="text" id="employeePosition" required>
+                <button type="submit">Registrar Empleado</button>
+                <p>Registra un nuevo empleado en la planilla de personal.</p>
+            </form>
+        </section>
+
+        <!-- Sección de Reportes Generales -->
+        <section id="reports" class="section">
+            <h2>Reportes Generales</h2>
+            <h3>Ventas</h3>
+            <ul id="salesReport">
+                <li>Ventas totales: <span id="totalSales">0</span></li>
+                <li>Ventas pagadas: <span id="paidSales">0</span></li>
+                <li>Ventas pendientes: <span id="pendingSales">0</span></li>
+            <ul id="salesReport"></ul>
+            <h3>Inventario</h3>
+            <ul id="inventoryReport">
+                <li>Inventario total: <span id="totalInventory">0</span></li>
+                <li>Inventario disponible: <span id="availableInventory">0</span></li>
+                <li>Inventario en stock: <span id="stockInventory">0</span></li>
+            <ul id="inventoryReport"></ul>
+            <h3>Compras</h3>
+            <ul id="purchaseReport">
+                <li>Compras realizadas: <span id="totalPurchases">0</span></li>
+                <li>Compras facturadas: <span id="paidPurchases">0</span></li>
+                <li>Compras pendientes: <span id="pendingPurchases">0</span></li>
+            <ul id="purchaseReport"></ul>
+            <h3>Reporte de Clientes</h3>
+            <ul id="clientReport"></ul>
+                <li>Clientes totales: <span id="totalClients">0</span></li>
+                <li>Clientes con contacto: <span id="contactClients">0</span></li>
+                <li>Clientes sin contacto: <span id="noContactClients">0</span></li>
+            <ul id="clientReport"></ul>
+
+        </section>
+
+        <!-- Sección de Configuración del Sistema -->
+        <section id="system-config" class="section">
+            <h2>Configuración del Sistema</h2>
+            <h3>Configuración SUNAT</h3>
+            <form id="sunatConfigForm">
+                <label for="sunatRuc">RUC:</label>
+                <input type="text" id="sunatRuc" required>
+                <label for="sunatCert">Certificado:</label>
+                <input type="file" id="sunatCert" required>
+                <button type="submit">Guardar Configuración</button>
+            </form>
+            <h3>Configuración SMTP</h3>
+            <form id="smtpConfigForm">
+                <label for="smtpServer">Servidor SMTP:</label>
+                <input type="text" id="smtpServer" required>
+                <label for="smtpPort">Puerto:</label>
+                <input type="number" id="smtpPort" required>
+                <button type="submit">Guardar Configuración SMTP</button>
+                <p>Configuración SMTP es necesaria para enviar correos electrónicos.</p>
+            </form>
+        </section>
+
+        <footer>
+            <p>© 2024 Nexwim Logistic S.A.| Versión 1.0 | Desarrollado por Angel Alegre Benito</p> 
+        </footer>
+
+        <script src="script.js"></script>
+    </div>
+</body>
+
+</html>
